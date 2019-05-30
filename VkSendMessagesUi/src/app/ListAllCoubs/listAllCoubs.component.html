@@ -1,0 +1,23 @@
+<div class="d-flex">
+<div class="p-2"><h1>Coubs list</h1></div>
+
+<div class="ml-auto p-2">
+  <button type="button" class="btn btn-warning btn-sm" routerLink="/listUsers">Users List</button>
+</div>
+</div>
+
+<ul *ngIf="coubs | async as coubs else noData">
+
+<div class="flex-container">
+  <div class="yyy" *ngFor="let item of coubs">
+    <div>
+      <div class="name">Coub id: {{item.id}}</div>
+      <iframe [src]="coubUrl(item.id)"
+              allowfullscreen frameborder="0" width="320" height="180" allow="autoplay"></iframe>
+    </div>
+  </div>
+</div>
+
+  </ul>
+  <ng-template #noData>Loading Data...</ng-template>
+

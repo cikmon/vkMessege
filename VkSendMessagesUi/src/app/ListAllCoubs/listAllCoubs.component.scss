@@ -1,0 +1,132 @@
+
+body{
+  height: 100%;
+  background: linear-gradient(30deg, #246655, #6c4698, #f0720b, #39929b);
+  background-size: 800% 800%;
+
+  -webkit-animation: AnimationName 54s ease infinite;
+  -moz-animation: AnimationName 54s ease infinite;
+  -o-animation: AnimationName 54s ease infinite;
+  animation: AnimationName 54s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+    0%{background-position:94% 0%}
+    50%{background-position:7% 100%}
+    100%{background-position:94% 0%}
+  }
+  @-moz-keyframes AnimationName {
+    0%{background-position:94% 0%}
+    50%{background-position:7% 100%}
+    100%{background-position:94% 0%}
+  }
+  @-o-keyframes AnimationName {
+    0%{background-position:94% 0%}
+    50%{background-position:7% 100%}
+    100%{background-position:94% 0%}
+  }
+  @keyframes AnimationName {
+    0%{background-position:94% 0%}
+    50%{background-position:7% 100%}
+    100%{background-position:94% 0%}
+  }
+}
+
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: stretch;
+  div {
+    background-color: #f1f1f1;
+    margin: 1px;
+    text-align: center;
+    font-size: 20px;
+  }
+
+
+
+}
+
+
+
+
+
+ul {
+  list-style: none;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+  font-family: 'Lora', serif;
+  transition: .5s linear;
+}
+i {
+  margin-right: 10px;
+}
+nav {
+  display: block;
+  margin: 0 auto 30px;
+}
+
+.messages ul {
+  background: #D4E7EE;
+  overflow: hidden;
+  padding: 0;
+
+  display: inline-block;
+}
+.messages{
+  text-align: center;
+}
+.messages li {
+  float: left;
+}
+.messages a {
+  display: block;
+  padding: 1em;
+  border-right: 1px solid #ADC0CE;
+  background: rgba(173, 192, 206, .3);
+  color: #29838C;
+}
+.two a:hover {background: #ADC0CE}
+
+.table22 {
+  width: 95%; /* Ширина таблицы */
+  margin: auto; /* Выравниваем таблицу по центру окна  */
+}
+
+
+.title {
+  font-family: "Montserrat";
+  text-align: center;
+  color: #FFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100vh;
+  letter-spacing: 1px;
+}
+
+h1 {
+  background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+  background-size: cover;
+  color: transparent;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  text-transform: uppercase;
+  font-size: 25px;
+  margin: 5px 0;
+}

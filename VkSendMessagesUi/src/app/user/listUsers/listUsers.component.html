@@ -1,0 +1,48 @@
+<div class="d-flex">
+<div class="p-2"><h1>Users list</h1></div>
+
+<div class="ml-auto p-2">
+  <button type="button" class="btn btn-warning btn-sm" routerLink="/listCoubs">List Coubs</button>
+</div>
+</div>
+<ng-container *ngIf="users | async as users else noData">
+
+<table class="table table-sm">
+  <thead>
+  <tr>
+    <th>icon</th><th>Name</th><th>id</th><th colspan="1">vkId</th><th>enable</th><th>count Massenges</th><th>blockTypeCoubs</th>
+  <th>sentCoubsId</th>
+  </tr>
+  </thead>
+
+    <tbody>
+
+  <ng-container *ngFor="let user of users">
+    <tr>
+     <td>
+       <img src="{{user.icon}}" width="40" height="40" routerLink="/user/{{user.id}}">
+      </td>
+      <td>{{user.name}}</td><td>{{user.id}}</td><td>{{user.vkid}}</td><td>{{user.enable}}</td><td>{{user.countMassenges}}</td>
+
+      <td>
+        <ng-container *ngFor="let type of user.blockTypeCoubs; let i =last">
+
+          <ng-container *ngIf="!i">{{type}}, </ng-container>
+          <ng-container *ngIf="i">{{type}}</ng-container>
+      </ng-container> </td>
+    <td>
+      <ng-container *ngFor="let coubdId of user.sentCoubsId; let ii =last">
+        <ng-container *ngIf="!ii">{{coubdId}}, </ng-container>
+        <ng-container *ngIf="ii">{{coubdId}}</ng-container>
+      </ng-container> </td>
+
+    </tr>
+
+  </ng-container>
+
+    </tbody>
+</table>
+
+</ng-container>
+<ng-template #noData>Loading Data...</ng-template>
+

@@ -1,0 +1,246 @@
+
+<div class="d-flex">
+<div class="p-2"><h1>User data</h1></div>
+
+<div class="ml-auto p-2">
+  <button type="button" class="btn btn-warning btn-sm" *ngIf="!edit" routerLink="/listCoubs">List Users</button>
+  <button type="button" class="btn btn-warning btn-sm" *ngIf="!edit" (click)="editForm(true)">Edit</button>
+  <button type="button" class="btn btn-success btn-sm" *ngIf="edit" (click)="save()">Save</button>
+  <button type="button" class="btn btn-dark btn-sm" *ngIf="edit" (click)="exit()">Exit</button>
+</div>
+</div>
+
+<ng-container *ngIf="!edit">
+<table class="table table22">
+  <thead>
+  <tr><th scope="col">Icon</th>
+    <th scope="col">Name</th><th scope="col">id</th><th scope="col">vkId</th><th scope="col">enable</th>
+    <th scope="col">count Massenges</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="table-success"><img src="{{user.icon}}" width="40" height="40"></td>
+
+    <td class="table-success">{{user.name}}</td> <td class="table-success">{{user.id}}</td> <td class="table-success">{{user.vkid}}</td><td class="table-success">{{user.enable}}</td> <td class="table-success">{{user.countMassenges}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<ng-container [ngSwitch]="getviewItemListt()">
+
+<div class="messages">
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+
+    <button type="button" class="btn" [class.btn-secondary]="getviewItemListt()!=1 || getviewItemListt()==0"
+                        [class.btn-success]="getviewItemListt()==1"
+            (click)="setviewItemListt(1)">Type bloked coubs</button>
+
+    <button type="button" class="btn" [class.btn-secondary]="getviewItemListt()!=2 || getviewItemListt()==0"
+            [class.btn-success]="getviewItemListt()==2"
+            (click)="setviewItemListt(2)">Sent Messages</button>
+
+    <button type="button" class="btn" [class.btn-secondary]="getviewItemListt()!=3 || getviewItemListt()==0"
+            [class.btn-success]="getviewItemListt()==3"
+            (click)="setviewItemListt(3)">Sent Coubs Id</button>
+
+  </div>
+</div>
+
+
+
+  <div *ngSwitchCase="1">
+
+    <table class="table table22 table-dark">
+      <thead>
+      <tr>
+        <th>№</th><th>Type</th>
+      </tr>
+      </thead>
+
+      <tbody *ngFor="let block of user.blockTypeCoubs; let i=index">
+      <tr>
+        <td>{{i+1}}</td><td>{{block}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div *ngSwitchCase="2">
+  <table class="table table22 table-dark">
+    <thead>
+  <tr>
+    <th>№</th><th>Sent message</th>
+  </tr>
+  </thead>
+    <tbody *ngFor="let message of user.sentMessages; let i=index">
+    <tr>
+      <td>{{i+1}}</td><td>{{message}}</td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+
+
+  <div *ngSwitchCase="3">
+    <table class="table table22 table-dark">
+      <thead>
+       <tr>
+        <th>№</th><th>Coub id</th>
+      </tr>
+     </thead>
+    <tbody *ngFor="let id of user.sentCoubsID; let i=index">
+    <tr>
+      <td>{{i+1}}</td><td>{{id}}</td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+
+
+</ng-container>
+
+
+
+</ng-container>
+
+
+
+
+
+
+
+<ng-container *ngIf="edit">
+  <table class="table table22">
+    <thead>
+    <tr><th scope="col">Icon</th>
+      <th scope="col">Name</th><th scope="col">id</th><th scope="col">vkId</th><th scope="col">enable</th>
+      <th scope="col">count Massenges</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="table-success">
+        <img src="{{user.icon}}" width="40" height="40">
+        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=".bd-example-modal">Edit</button>
+      </td>
+      <td class="table-success">{{user.name}}</td> <td class="table-success">{{user.id}}</td>
+      <td class="table-success">{{user.vkid}}</td>
+
+      <td class="table-success">
+        <input class="checkbox" type="checkbox" id="codepen" [(ngModel)]="user.enable" />
+        <label for="codepen"></label>
+      </td>
+
+
+
+      <td class="table-success">{{user.countMassenges}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-container [ngSwitch]="getviewItemListt()">
+
+    <div class="messages">
+
+      <div class="btn-group" role="group" aria-label="Basic example">
+
+        <button type="button" class="btn" [class.btn-secondary]="getviewItemListt()!=1 || getviewItemListt()==0"
+                [class.btn-success]="getviewItemListt()==1"
+                (click)="setviewItemListt(1)">Type block coubs</button>
+
+        <button type="button" class="btn" [class.btn-secondary]="getviewItemListt()!=2 || getviewItemListt()==0"
+                [class.btn-success]="getviewItemListt()==2"
+                (click)="setviewItemListt(2)">Sent Messages</button>
+
+        <button type="button" class="btn" [class.btn-secondary]="getviewItemListt()!=3 || getviewItemListt()==0"
+                [class.btn-success]="getviewItemListt()==3"
+                (click)="setviewItemListt(3)">Sent CoubsId</button>
+
+      </div>
+    </div>
+
+
+    <div *ngSwitchCase="1">
+
+      <label for="tag-typer">
+        <div id="tags" >
+          <ng-container *ngFor="let block of user.blockTypeCoubs">
+              <span class="tag"><span class="close" (click)="removeTypeCoub(block)">&times;</span>{{block}}</span>
+          </ng-container>
+
+          <input id="tag-typer" type="text" placeholder="Add blocks..."   #box (keyup.enter)="onEnter(box.value); box.value='' "/>
+
+        </div>
+
+      </label>
+
+    </div>
+
+
+    <div *ngSwitchCase="2">
+      <table class="table table22 table-dark">
+        <thead>
+        <tr>
+          <th>№</th><th>Sent message</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let message of user.sentMessages; let i=index">
+        <tr>
+          <td>{{i+1}}</td><td>{{message}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div *ngSwitchCase="3">
+      <table class="table table22 table-dark">
+        <thead>
+        <tr>
+          <th>№</th><th>Coub id</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let id of user.sentCoubsID; let i=index">
+        <tr>
+          <td>{{i+1}}</td><td>{{id}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  </ng-container>
+
+
+
+</ng-container>
+
+
+
+
+<div class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Enter icon url</p>
+        <input type="text" class="form-control" placeholder="Add icon url..." value="{{user.icon}}"
+               #box (keyup.enter)="onEnter(box.value); box.value='' "/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveIconUrl(box.value)">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
